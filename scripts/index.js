@@ -3,8 +3,8 @@ const popup = document.querySelector('.popup'),
   popupCloseBtn = document.querySelector('.popup__close-btn'),
   profileTitle = document.querySelector('.profile__title'),
   profileSubtitle = document.querySelector('.profile__subtitle'),
-  profileTitleInput = document.querySelector('.popup__input_type_name'),
-  profileSubtitleInput = document.querySelector('.popup__input_type_about'),
+  profileTitleInput = document.querySelector('.popup__form-input_type-name'),
+  profileSubtitleInput = document.querySelector('.popup__form-input_type-about'),
   formBtn = document.querySelector('.popup__form-btn'),
   form = document.querySelector('.popup__form');
 
