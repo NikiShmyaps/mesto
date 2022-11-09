@@ -9,25 +9,32 @@ const popup = document.querySelector('.popup'),
   form = document.getElementById('profile_form');
 
 
+const popupShow = (popupClassName) => {
+  popupClassName.classList.add('popup_opened');
+}
+const popupHide = (popupClassName) => {
+  popupClassName.classList.remove('popup_opened');
+}
+
 const formSubmitHandler = (e) => {
   e.preventDefault();
 
   profileTitle.textContent = profileTitleInput.value;
   profileSubtitle.textContent = profileSubtitleInput.value;
 
-  popup.classList.remove('popup_opened');
+  popupHide(popup);
 }
 
 
 editProfileBtn.addEventListener('click', () => {
-  popup.classList.add('popup_opened');
+  popupShow(popup);
 
   profileTitleInput.value = profileTitle.textContent;
   profileSubtitleInput.value = profileSubtitle.textContent;
 });
 
 popupCloseBtn.addEventListener('click', () => {
-  popup.classList.remove('popup_opened');
+  popupHide(popup);
 });
 
 form.addEventListener('submit', formSubmitHandler);

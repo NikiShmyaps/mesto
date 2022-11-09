@@ -1,4 +1,9 @@
 .profile__subtitle {
+  max-width: 334px;
+  width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
   font-family: 'Inter', Arial, sans-serif;
   font-weight: 400;
   font-size: 18px;
@@ -12,5 +17,8 @@
     text-align: center;
     font-size: 14px;
     line-height: 17px;
+    max-width: 216px;
   }
+
+  
 }

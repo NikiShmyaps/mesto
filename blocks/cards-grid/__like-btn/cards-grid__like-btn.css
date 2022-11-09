@@ -1,0 +1,15 @@
+.cards-grid__like-btn {
+  min-width: 22px;
+  min-height: 19px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  margin-left: 40px;
+  background: url(../../../images/cards/like.svg) no-repeat 100%/contain;
+  cursor: pointer;
+  transition: .3s ease;
+}
+
+.cards-grid__like-btn:hover {
+  opacity: .5;
+}

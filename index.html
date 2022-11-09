@@ -17,11 +17,11 @@
       <div class="profile__info">
         <div class="profile__head">
           <h1 class="profile__title">Жак-Ив Кусто</h1>
-          <button class="profile__edit-button"></button>
+          <button aria-label="Изменить информацию" class="profile__edit-button" type="button"></button>
         </div>
         <p class="profile__subtitle">Исследователь океана</p>
       </div>
-      <button class="profile__add-button"></button>
+      <button aria-label="Добавить карту" class="profile__add-button" type="button"></button>
     </section>
     <section class="cards-grid">
       <ul class="cards-grid__container">
@@ -29,42 +29,42 @@
           <img class="cards-grid__img" src="./images/cards/img1.jpg" alt="Карачаевск">
           <div class="cards-grid__info">
             <h2 class="cards-grid__title">Карачаевск</h2>
-            <button class="cards-grid__like"></button>
+            <button class="cards-grid__like-btn" type="button"></button>
           </div>
         </li>
         <li class="cards-grid__item">
           <img class="cards-grid__img" src="./images/cards/img2.jpg" alt="Гора">
           <div class="cards-grid__info">
             <h2 class="cards-grid__title">Гора Эльбрус</h2>
-            <button class="cards-grid__like"></button>
+            <button class="cards-grid__like-btn" type="button"></button>
           </div>
         </li>
         <li class="cards-grid__item">
           <img class="cards-grid__img" src="./images/cards/img3.jpg" alt="Домбай">
           <div class="cards-grid__info">
             <h2 class="cards-grid__title">Домбай</h2>
-            <button class="cards-grid__like"></button>
+            <button class="cards-grid__like-btn" type="button"></button>
           </div>
         </li>
         <li class="cards-grid__item">
           <img class="cards-grid__img" src="./images/cards/img4.jpg" alt="Гора">
           <div class="cards-grid__info">
             <h2 class="cards-grid__title">Гора Эльбрус</h2>
-            <button class="cards-grid__like"></button>
+            <button class="cards-grid__like-btn" type="button"></button>
           </div>
         </li>
         <li class="cards-grid__item">
           <img class="cards-grid__img" src="./images/cards/img5.jpg" alt="Домбай">
           <div class="cards-grid__info">
             <h2 class="cards-grid__title">Домбай</h2>
-            <button class="cards-grid__like"></button>
+            <button class="cards-grid__like-btn" type="button"></button>
           </div>
         </li>
         <li class="cards-grid__item">
           <img class="cards-grid__img" src="./images/cards/img6.jpg" alt="Карачаевск">
           <div class="cards-grid__info">
             <h2 class="cards-grid__title">Карачаево-Черкесия</h2>
-            <button class="cards-grid__like"></button>
+            <button class="cards-grid__like-btn" type="button"></button>
           </div>
         </li>
       </ul>
@@ -76,18 +76,16 @@
 
   <div class="popup">
     <div class="popup__form-container">
-      <button class="popup__form-close"></button>
+      <button class="popup__form-close" type="button"></button>
+      <h2 class="popup__form-title">Редактировать профиль</h2>
       <form class="popup__form" name="profile_name" id="profile_form">
-        <h2 class="popup__form-title">Редактировать профиль</h2>
-        <div class="form">
-          <label class="form__input-label">
-            <input class="form__input" type="text" placeholder="Имя" name="name" id="name">
-          </label>
-          <label class="form__input-label">
-            <input class="form__input" type="text" placeholder="О себе" name="about" id="about">
-          </label>
-          <button class="form__btn" type="submit" id="send">Сохранить</button>
-        </div>
+        <label class="form__input-label">
+          <input class="form__input" type="text" placeholder="Имя" name="name" id="name">
+        </label>
+        <label class="form__input-label">
+          <input class="form__input" type="text" placeholder="О себе" name="about" id="about">
+        </label>
+        <button class="form__btn" type="submit" id="send">Сохранить</button>
       </form>
     </div>
   </div>
