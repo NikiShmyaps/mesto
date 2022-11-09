@@ -37,13 +37,11 @@
 /*footer*/
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
-@import url(../blocks/popup/__form-close/popup__form-close.css);
-@import url(../blocks/popup/__form-container/popup__form-container.css);
-@import url(../blocks/popup/__form-title/popup__form-title.css);
+@import url(../blocks/popup/__close-btn/popup__close-btn.css);
+@import url(../blocks/popup/__container/popup__container.css);
+@import url(../blocks/popup/__title/popup__title.css);
 @import url(../blocks/popup/__form/popup__form.css);
-
-@import url(../blocks/form/form.css);
-@import url(../blocks/form/__btn/form__btn.css);
-@import url(../blocks/form/__input-label/form__input-label.css);
-@import url(../blocks/form/__input/form__input.css);
+@import url(../blocks/popup/__form-btn/popup__form-btn.css);
+@import url(../blocks/popup/__form-label/popup__form-label.css);
+@import url(../blocks/popup/__form-input/popup__form-input.css);
 

@@ -1,6 +1,6 @@
 const popup = document.querySelector('.popup'),
   editProfileBtn = document.querySelector('.profile__edit-button'),
-  popupCloseBtn = document.querySelector('.popup__form-close'),
+  popupCloseBtn = document.querySelector('.popup__close-btn'),
   profileTitle = document.querySelector('.profile__title'),
   profileSubtitle = document.querySelector('.profile__subtitle'),
   profileTitleInput = document.getElementById('name'),
