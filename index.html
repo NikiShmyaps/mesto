@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mesto</title>
+  <link rel="stylesheet" href="./pages/index.css">
+</head>
+<body class="page">
+  <header class="header">
+    <img src="./images/logo.svg" alt="Mesto" class="header__logo">
+  </header>
+  <main class="main">
+    <section class="profile">
+      <img src="./images/profile/avatar.png" alt="Аватар" class="profile__avatar">
+      <div class="profile__info">
+        <div class="profile__head">
+          <h1 class="profile__title">Жак-Ив Кусто</h1>
+          <button class="profile__edit-button"></button>
+        </div>
+        <p class="profile__subtitle">Исследователь океана</p>
+      </div>
+      <button class="profile__add-button"></button>
+    </section>
+    <section class="cards-grid">
+      <ul class="cards-grid__container">
+        <li class="cards-grid__item">
+          <img class="cards-grid__img" src="./images/cards/img1.jpg" alt="Карачаевск">
+          <div class="cards-grid__info">
+            <h2 class="cards-grid__title">Карачаевск</h2>
+            <button class="cards-grid__like"></button>
+          </div>
+        </li>
+        <li class="cards-grid__item">
+          <img class="cards-grid__img" src="./images/cards/img2.jpg" alt="Гора">
+          <div class="cards-grid__info">
+            <h2 class="cards-grid__title">Гора Эльбрус</h2>
+            <button class="cards-grid__like"></button>
+          </div>
+        </li>
+        <li class="cards-grid__item">
+          <img class="cards-grid__img" src="./images/cards/img3.jpg" alt="Домбай">
+          <div class="cards-grid__info">
+            <h2 class="cards-grid__title">Домбай</h2>
+            <button class="cards-grid__like"></button>
+          </div>
+        </li>
+        <li class="cards-grid__item">
+          <img class="cards-grid__img" src="./images/cards/img4.jpg" alt="Гора">
+          <div class="cards-grid__info">
+            <h2 class="cards-grid__title">Гора Эльбрус</h2>
+            <button class="cards-grid__like"></button>
+          </div>
+        </li>
+        <li class="cards-grid__item">
+          <img class="cards-grid__img" src="./images/cards/img5.jpg" alt="Домбай">
+          <div class="cards-grid__info">
+            <h2 class="cards-grid__title">Домбай</h2>
+            <button class="cards-grid__like"></button>
+          </div>
+        </li>
+        <li class="cards-grid__item">
+          <img class="cards-grid__img" src="./images/cards/img6.jpg" alt="Карачаевск">
+          <div class="cards-grid__info">
+            <h2 class="cards-grid__title">Карачаево-Черкесия</h2>
+            <button class="cards-grid__like"></button>
+          </div>
+        </li>
+      </ul>
+    </section>
+  </main>
+  <footer class="footer">
+    <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
+  </footer>
+
+  <div class="popup">
+    <div class="popup__form-container">
+      <button class="popup__form-close"></button>
+      <form class="popup__form" name="profile_name" id="profile_form">
+        <h2 class="popup__form-title">Редактировать профиль</h2>
+        <div class="form">
+          <label class="form__input-label">
+            <input class="form__input" type="text" placeholder="Имя" name="name" id="name">
+          </label>
+          <label class="form__input-label">
+            <input class="form__input" type="text" placeholder="О себе" name="about" id="about">
+          </label>
+          <button class="form__btn" type="submit" id="send">Сохранить</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script src="./scripts/index.js"></script>
+</body>
+</html>

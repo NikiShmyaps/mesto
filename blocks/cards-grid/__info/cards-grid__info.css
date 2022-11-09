@@ -1,0 +1,5 @@
+.cards-grid__info {
+  display: flex;
+  justify-content: space-between;
+  padding: 25px 15px 30px 20px;
+}

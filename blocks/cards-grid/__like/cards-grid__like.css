@@ -1,0 +1,15 @@
+.cards-grid__like {
+  margin-left: 10px;
+  width: 22px;
+  height: 19px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: url(../../../images/cards/like.svg) no-repeat 100%/contain;
+  cursor: pointer;
+  transition: .3s ease;
+}
+
+.cards-grid__like:hover {
+  background: url(../../../images/cards/like-hover.svg) no-repeat 100%/contain;
+}
