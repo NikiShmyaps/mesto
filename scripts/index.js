@@ -3,17 +3,20 @@ const popup = document.querySelector('.popup'),
   popupCloseBtn = document.querySelector('.popup__close-btn'),
   profileTitle = document.querySelector('.profile__title'),
   profileSubtitle = document.querySelector('.profile__subtitle'),
-  profileTitleInput = document.getElementById('name'),
-  profileSubtitleInput = document.getElementById('about'),
-  formBtn = document.getElementById('send'),
-  form = document.getElementById('profile_form');
+  profileTitleInput = document.querySelector('.popup__input_type_name'),
+  profileSubtitleInput = document.querySelector('.popup__input_type_about'),
+  formBtn = document.querySelector('.popup__form-btn'),
+  form = document.querySelector('.popup__form');
 
 
-const popupShow = (popupClassName) => {
-  popupClassName.classList.add('popup_opened');
+const popupShow = (elem) => {
+  elem.classList.add('popup_opened');
+
+  profileTitleInput.value = profileTitle.textContent;
+  profileSubtitleInput.value = profileSubtitle.textContent;
 }
-const popupHide = (popupClassName) => {
-  popupClassName.classList.remove('popup_opened');
+const popupHide = (elem) => {
+  elem.classList.remove('popup_opened');
 }
 
 const formSubmitHandler = (e) => {
@@ -28,9 +31,6 @@ const formSubmitHandler = (e) => {
 
 editProfileBtn.addEventListener('click', () => {
   popupShow(popup);
-
-  profileTitleInput.value = profileTitle.textContent;
-  profileSubtitleInput.value = profileSubtitle.textContent;
 });
 
 popupCloseBtn.addEventListener('click', () => {

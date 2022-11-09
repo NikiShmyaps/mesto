@@ -1,11 +1,10 @@
 .cards-grid__like-btn {
-  min-width: 22px;
-  min-height: 19px;
+  width: 22px;
+  height: 19px;
   margin: 0;
   padding: 0;
-  border: 0;
-  margin-left: 40px;
-  background: url(../../../images/cards/like.svg) no-repeat 100%/contain;
+  border: none;
+  background: url(../../../images/cards/like.svg) no-repeat 100%/contain transparent;
   cursor: pointer;
   transition: .3s ease;
 }

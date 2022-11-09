@@ -1,7 +1,7 @@
 .popup__form-btn {
   margin-top: 18px;
   padding: 0;
-  border: 0;
+  border: none;
   width: 100%;
   height: 50px;
   background: #000000;
@@ -16,7 +16,7 @@
 }
 
 .popup__form-btn:hover {
-  background: rgba(0, 0, 0, .8);
+  opacity: .8;
 }
 
 @media screen and (max-width: 900px) {
@@ -24,5 +24,6 @@
     margin-top: 15px;
     font-size: 14px;
     line-height: 17px;
+    height: 46px;
   }
 }

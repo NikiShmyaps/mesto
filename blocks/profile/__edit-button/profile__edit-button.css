@@ -2,9 +2,8 @@
   width: 24px;
   height: 24px;
   border: 1px solid #FFFFFF;
-  background: url(../../../images/profile/edit-btn.svg) no-repeat center;
+  background: url(../../../images/profile/edit-btn.svg) no-repeat center transparent;
   background-size: 10px 10px;
-  background-color: transparent;
   align-self: center;
   margin: 5px 0 0 0;
   padding: 0;
@@ -14,7 +13,6 @@
 
 .profile__edit-button:hover {
   opacity: .6;
-  background: url(../../../images/profile/edit-btn.svg) no-repeat center;
 }
 
 @media screen and (max-width: 900px) {
@@ -22,5 +20,6 @@
     max-width: 18px;
     max-height: 18px;
     margin: 2px 0 0 0;
+    background-size: 7px 7px;
   }
 }
