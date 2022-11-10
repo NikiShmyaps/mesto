@@ -1,4 +1,4 @@
-.popup__form-btn {
+.popup__btn {
   margin-top: 18px;
   padding: 0;
   border: none;
@@ -15,12 +15,12 @@
   transition: .3s ease;
 }
 
-.popup__form-btn:hover {
+.popup__btn:hover {
   opacity: .8;
 }
 
 @media screen and (max-width: 900px) {
-  .popup__form-btn {
+  .popup__btn {
     margin-top: 15px;
     font-size: 14px;
     line-height: 17px;

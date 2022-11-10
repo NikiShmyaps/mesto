@@ -1,6 +1,5 @@
 .profile__subtitle {
-  max-width: 334px;
-  width: 100%;
+  width: 334px;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
@@ -17,7 +16,7 @@
     text-align: center;
     font-size: 14px;
     line-height: 17px;
-    max-width: 216px;
+    width: 216px;
   }
 
   
