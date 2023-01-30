@@ -28,13 +28,22 @@
 @import url(../blocks/cards-grid/__info/cards-grid__info.css);
 @import url(../blocks/cards-grid/__item/cards-grid__item.css);
 @import url(../blocks/cards-grid/__like-btn/cards-grid__like-btn.css);
+@import url(../blocks/cards-grid/__trash-btn/cards-grid__trash-btn.css);
 @import url(../blocks/cards-grid/__title/cards-grid__title.css);
 
 /*footer*/
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
 
-/*footer*/
+/*popup-picture*/
+@import url(../blocks/popup-picture/popup-picture.css);
+@import url(../blocks/popup-picture/__close-btn/popup-picture__close-btn.css);
+@import url(../blocks/popup-picture/__container/popup-picture__container.css);
+@import url(../blocks/popup-picture/__image/popup-picture__image.css);
+@import url(../blocks/popup-picture/__subtitle/popup-picture__subtitle.css);
+@import url(../blocks/popup-picture/_opened/popup-picture_opened.css);
+
+/*popup*/
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
 @import url(../blocks/popup/__close-btn/popup__close-btn.css);

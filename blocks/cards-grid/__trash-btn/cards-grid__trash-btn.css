@@ -1,0 +1,17 @@
+.cards-grid__trash-btn {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  width: 18px;
+  height: 19px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: url(../../../images/cards/trash.svg) no-repeat 100%/contain transparent;
+  cursor: pointer;
+  transition: .3s ease;
+}
+  
+.cards-grid__trash-btn:hover {
+  opacity: .6;
+}

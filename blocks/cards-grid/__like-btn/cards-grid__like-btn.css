@@ -12,3 +12,7 @@
 .cards-grid__like-btn:hover {
   opacity: .5;
 }
+
+.cards-grid__like-btn_active {
+  background: url(../../../images/cards/like-active.svg) no-repeat 100%/contain transparent;
+}
