@@ -1,11 +1,16 @@
-const popup = document.querySelector('.popup'),
+const popupProfile = document.querySelector('.profile-popup'),
+  popupCard = document.querySelector('.card-popup'),
   editProfileBtn = document.querySelector('.profile__edit-button'),
-  popupCloseBtn = document.querySelector('.popup__close-btn'),
+  popupCloseProfile = document.querySelector('.profile-popup__close'),
+  popupCloseCard = document.querySelector('.card-popup__close'),
   profileTitle = document.querySelector('.profile__title'),
   profileSubtitle = document.querySelector('.profile__subtitle'),
-  profileTitleInput = document.querySelector('.popup__input_type_name'),
-  profileSubtitleInput = document.querySelector('.popup__input_type_about'),
-  form = document.querySelector('.popup__form'),
+  profileTitleInput = document.querySelector('.profile-popup__input_type_name'),
+  profileSubtitleInput = document.querySelector('.profile-popup__input_type_about'),
+  cardTitleInput = document.querySelector('.card-popup__input_type_name'),
+  cardSubtitleInput = document.querySelector('.card-popup__input_type_about'),
+  formProfile = document.querySelector('.profile-popup__form'),
+  formCard = document.querySelector('.card-popup__form'),
   cardTamplate = document.querySelector('.card-template'),
   cardsList = document.querySelector('.cards-grid__container')
   addCardBtn = document.querySelector('.profile__add-button'),
@@ -14,54 +19,31 @@ const popup = document.querySelector('.popup'),
   popupPictureSubtitle = document.querySelector('.popup-picture__subtitle'),
   popupPictureCloseBtn = document.querySelector('.popup-picture__close-btn');
 
-const popupShow = (
-  elem,
-  title,
-  titlePlaceholder,
-  btnTitle,
-  btnPlaceholder,
-  inputTitle = '',
-  inputSubtitle = ''
-) => {
-  elem.classList.add('popup_opened');
-  profileTitleInput.placeholder = titlePlaceholder;
-  profileSubtitleInput.placeholder = btnPlaceholder;
-  elem.querySelector('.popup__title').textContent = title;
-  elem.querySelector('.popup__btn').textContent = btnTitle;
-  profileTitleInput.value = inputTitle;
-  profileSubtitleInput.value = inputSubtitle;
+const popupShow = ( popup ) => {
+  popup.classList.add('popup_opened');
 }
-const popupHide = (elem) => {
-  elem.classList.remove('popup_opened');
-  elem.removeAttribute('id');
+const popupHide = ( popup ) => {
+  popup.classList.remove('popup_opened');
 }
 
 editProfileBtn.addEventListener('click', () => {
-  popupShow(
-    popup,
-    'Редактировать профиль',
-    'Имя',
-    'Сохранить',
-    'О себе',
-    profileTitle.textContent,
-    profileSubtitle.textContent
-  );
-  popup.id = 'editProfile';
+  popupShow(popupProfile);
+  profileTitleInput.value = profileTitle.textContent;
+  profileSubtitleInput.value = profileSubtitle.textContent;
 });
 
 addCardBtn.addEventListener('click', () => {
-  popupShow(
-    popup,
-    'Новое место',
-    'Название',
-    'Создать',
-    'Ссылка на картинку'
-  );
-  popup.id = 'addCard';
+  popupShow(popupCard);
+  cardTitleInput.value = '';
+  cardSubtitleInput.value = '';
 });
 
-popupCloseBtn.addEventListener('click', () => {
-  popupHide(popup);
+popupCloseProfile.addEventListener('click', () => {
+  popupHide(popupProfile);
+});
+
+popupCloseCard.addEventListener('click', () => {
+  popupHide(popupCard);
 });
 
 popupPictureCloseBtn.addEventListener('click', () => {
@@ -82,7 +64,7 @@ const addCard = (title, link) => {
   cardItem.querySelector('.cards-grid__img').addEventListener('click', () => {
     popupPictureImg.src = link;
     popupPictureSubtitle.textContent = title;
-    popupPicture.classList.add('popup_opened');
+    popupShow(popupPicture);
   })
   
 
@@ -120,16 +102,22 @@ initialCards.forEach(item => {
   addCard( item.name, item.link )
 });
 
-const formSubmitHandler = (e) => {
+const formSubmitEditProfile = (e) => {
   e.preventDefault();
 
-  if ( popup.id === 'editProfile' ) {
-    profileTitle.textContent = profileTitleInput.value;
-    profileSubtitle.textContent = profileSubtitleInput.value;
-  } else if ( popup.id === 'addCard' ) {
-    addCard(profileTitleInput.value, profileSubtitleInput.value)
-  }
+  profileTitle.textContent = profileTitleInput.value;
+  profileSubtitle.textContent = profileSubtitleInput.value;
 
-  popupHide(popup);
+  popupHide(popupProfile);
 }
-form.addEventListener('submit', formSubmitHandler)
+
+const formSubmitCard = (e) => {
+  e.preventDefault();
+
+  addCard(cardTitleInput.value, cardSubtitleInput.value)
+
+  popupHide(popupCard);
+}
+
+formProfile.addEventListener('submit', formSubmitEditProfile);
+formCard.addEventListener('submit', formSubmitCard)

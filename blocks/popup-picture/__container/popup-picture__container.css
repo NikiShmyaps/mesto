@@ -1,13 +1,6 @@
 .popup-picture__container {
-  position: relative;
   max-width: 75vw;
+  width: auto;
   max-height: 75vh;
-  box-sizing: border-box;
+  background: transparent;
 }
-
-/* @media screen and (max-width: 900px) {
-  .popup-picture__container {
-    padding: 25px 25px;
-    width: 282px;
-  }
-} */
