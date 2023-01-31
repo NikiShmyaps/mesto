@@ -1,6 +1,7 @@
-.popup-picture__container {
+.popup__container_picture {
   max-width: 75vw;
-  width: auto;
   max-height: 75vh;
+  width: auto;
   background: transparent;
+  padding: 0;
 }

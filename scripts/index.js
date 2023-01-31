@@ -1,23 +1,23 @@
-const popupProfile = document.querySelector('.profile-popup'),
-  popupCard = document.querySelector('.card-popup'),
+const popupProfile = document.querySelector('.popup_form_profile'),
+  popupCard = document.querySelector('.popup_form_card'),
   editProfileBtn = document.querySelector('.profile__edit-button'),
-  popupCloseProfile = document.querySelector('.profile-popup__close'),
-  popupCloseCard = document.querySelector('.card-popup__close'),
+  popupCloseProfile = document.querySelector('.popup__close_form_profile'),
+  popupCloseCard = document.querySelector('.popup__close_form_card'),
   profileTitle = document.querySelector('.profile__title'),
   profileSubtitle = document.querySelector('.profile__subtitle'),
-  profileTitleInput = document.querySelector('.profile-popup__input_type_name'),
-  profileSubtitleInput = document.querySelector('.profile-popup__input_type_about'),
-  cardTitleInput = document.querySelector('.card-popup__input_type_title'),
-  cardSubtitleInput = document.querySelector('.card-popup__input_type_link'),
-  formProfile = document.querySelector('.profile-popup__form'),
-  formCard = document.querySelector('.card-popup__form'),
+  profileNameInput = document.querySelector('.popup__input_type_name'),
+  profileAboutInput = document.querySelector('.popup__input_type_about'),
+  cardTitleInput = document.querySelector('.popup__input_type_title'),
+  cardLinkInput = document.querySelector('.popup__input_type_link'),
+  formProfile = document.querySelector('.popup_form_profile'),
+  formCard = document.querySelector('.popup_form_card'),
   cardTamplate = document.querySelector('.card-template'),
   cardsList = document.querySelector('.cards-grid__container')
   addCardBtn = document.querySelector('.profile__add-button'),
-  popupPicture = document.querySelector('.popup-picture'),
-  popupPictureImg = document.querySelector('.popup-picture__image'),
-  popupPictureSubtitle = document.querySelector('.popup-picture__subtitle'),
-  popupPictureCloseBtn = document.querySelector('.popup-picture__close-btn');
+  popupPicture = document.querySelector('.popup_picture'),
+  popupPictureImg = document.querySelector('.popup__image_picture'),
+  popupPictureSubtitle = document.querySelector('.popup__subtitle_picture'),
+  popupPictureCloseBtn = document.querySelector('.popup__close_picture');
 
 const popupShow = ( popup ) => {
   popup.classList.add('popup_opened');
@@ -28,14 +28,14 @@ const popupHide = ( popup ) => {
 
 editProfileBtn.addEventListener('click', () => {
   popupShow(popupProfile);
-  profileTitleInput.value = profileTitle.textContent;
-  profileSubtitleInput.value = profileSubtitle.textContent;
+  profileNameInput.value = profileTitle.textContent;
+  profileAboutInput.value = profileSubtitle.textContent;
 });
 
 addCardBtn.addEventListener('click', () => {
   popupShow(popupCard);
   cardTitleInput.value = '';
-  cardSubtitleInput.value = '';
+  cardLinkInput.value = '';
 });
 
 popupCloseProfile.addEventListener('click', () => {
@@ -105,8 +105,8 @@ initialCards.forEach(item => {
 const formSubmitEditProfile = (e) => {
   e.preventDefault();
 
-  profileTitle.textContent = profileTitleInput.value;
-  profileSubtitle.textContent = profileSubtitleInput.value;
+  profileTitle.textContent = profileNameInput.value;
+  profileSubtitle.textContent = profileAboutInput.value;
 
   popupHide(popupProfile);
 }
@@ -114,7 +114,7 @@ const formSubmitEditProfile = (e) => {
 const formSubmitCard = (e) => {
   e.preventDefault();
 
-  addCard(cardTitleInput.value, cardSubtitleInput.value)
+  addCard(cardTitleInput.value, cardLinkInput.value)
 
   popupHide(popupCard);
 }
