@@ -15,8 +15,8 @@ const popupProfile = document.querySelector('.popup_form_profile'),
   cardsList = document.querySelector('.cards-grid__container')
   addCardBtn = document.querySelector('.profile__add-button'),
   popupPicture = document.querySelector('.popup_picture'),
-  popupPictureImg = document.querySelector('.popup__image_picture'),
-  popupPictureSubtitle = document.querySelector('.popup__subtitle_picture'),
+  popupPictureImg = document.querySelector('.popup__image'),
+  popupPictureSubtitle = document.querySelector('.popup__subtitle'),
   popupPictureCloseBtn = document.querySelector('.popup__close_picture');
 
 const popupShow = ( popup ) => {
