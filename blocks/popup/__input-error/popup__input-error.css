@@ -1,7 +1,7 @@
 .popup__input-error {
-  display: none;
-  margin-top: 5px;
-  margin-bottom: 13px;
+  display: block;
+  opacity: 0;
+  min-height: 30px;
   font-family: 'Inter';
   font-style: normal;
   font-weight: 400;

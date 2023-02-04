@@ -11,7 +11,7 @@ const popupProfile = document.querySelector('.popup_form_profile'),
   formProfile = document.querySelector('.popup_form_profile'),
   formCard = document.querySelector('.popup_form_card'),
   cardTamplate = document.querySelector('.card-template'),
-  cardsList = document.querySelector('.cards-grid__container'),
+  cardsContainer = document.querySelector('.cards-grid__container'),
   addCardBtn = document.querySelector('.profile__add-button'),
   popupPicture = document.querySelector('.popup_picture'),
   popupPictureImg = document.querySelector('.popup__image'),
@@ -19,24 +19,24 @@ const popupProfile = document.querySelector('.popup_form_profile'),
 
 const closePopupEscape = (e) => {
   if (e.key === 'Escape') {
-    const openedPopup = document.querySelector('.popup_opened');
-    closePopup(openedPopup);
+    const openedPopup = document.querySelector('.popup_opened')
+    closePopup(openedPopup)
   }
 }
 
 const closePopupOverlay = (e) => {
   if (e.target.classList.contains('popup')) {
-    const openedPopup = document.querySelector('.popup_opened');
-    closePopup(openedPopup);
+    closePopup(e.target)
   }
 }
 
 const openPopup = ( popup ) => {
-  popup.classList.add('popup_opened');
-  document.addEventListener('keydown', closePopupEscape);
+  popup.classList.add('popup_opened')
+  document.addEventListener('keydown', closePopupEscape)
 }
 const closePopup = ( popup ) => {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopupEscape)
 }
 
 editProfileBtn.addEventListener('click', () => {
@@ -51,6 +51,7 @@ addCardBtn.addEventListener('click', () => {
 
 closeButtons.forEach((button) => {
   const popup = button.closest('.popup');
+  popup.addEventListener('mousedown', closePopupOverlay);
   button.addEventListener('click', () => closePopup(popup));
 });
 
@@ -79,7 +80,7 @@ const createCard = ( title, link ) => {
 
 const addCard = ( title, link ) => {
   const cardItem = createCard( title, link );
-  cardsList.prepend(cardItem);
+  cardsContainer.prepend(cardItem);
 }
 
 const initialCards = [
@@ -130,10 +131,6 @@ const handleCardFormSubmit = (e) => {
   closePopup(popupCard);
   e.target.reset()
 }
-
-popupProfile.addEventListener('click', closePopupOverlay);
-popupCard.addEventListener('click', closePopupOverlay);
-popupPicture.addEventListener('click', closePopupOverlay);
 
 formProfile.addEventListener('submit', handleProfileFormSubmit);
 formCard.addEventListener('submit', handleCardFormSubmit);
