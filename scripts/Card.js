@@ -1,16 +1,18 @@
 export class Card {
-  constructor ( data, templateSelector ) {
+  constructor ( data, templateSelector, handleOpenPopup ) {
     this._title = data.name
     this._image = data.image
     this._templateSelector = templateSelector
+    this._handleOpenPopup = handleOpenPopup
   }
 
-  _handleLikeCard = (e) => {
-    e.target.classList.toggle('cards-grid__like-btn_active')
+  _handleLikeCard = () => {
+    this._cardLikeBtn.classList.toggle('cards-grid__like-btn_active')
   }
 
-  _handleTrashCard = (e) => {
-    e.target.closest('.cards-grid__item').remove()
+  _handleTrashCard = () => {
+    this._element.remove()
+    this._element = null
   }
 
   _closePopupEscape = (e) => {
@@ -22,21 +24,10 @@ export class Card {
     }
   }
 
-  _handlePicture = () => {
-    const popupImg = document.querySelector('.popup__image')
-    popupImg.src = this._image
-    popupImg.alt = this._title
-    popupImg.textContent = this._title
-    
-    document.querySelector('.popup_picture').classList.add('popup_opened')
-  }
-
   _setEventListeners() {
-    this._element.querySelector('.cards-grid__like-btn').addEventListener('click', this._handleLikeCard)
-    this._element.querySelector('.cards-grid__trash-btn').addEventListener('click', this._handleTrashCard)
-    this._element.querySelector('.cards-grid__img').addEventListener('click', this._handlePicture)
-
-    document.addEventListener('keydown', this._closePopupEscape)
+    this._cardLikeBtn.addEventListener('click', () => this._handleLikeCard())
+    this._cardTrashBtn.addEventListener('click', () => this._handleTrashCard())
+    this._cardImg.addEventListener('click', () => this._handleOpenPopup(this._title, this._image))
   }
 
   _getTemplate() {
@@ -51,12 +42,16 @@ export class Card {
   
   generateCard() {
     this._element = this._getTemplate()
+    this._cardLikeBtn = this._element.querySelector('.cards-grid__like-btn')
+    this._cardTrashBtn = this._element.querySelector('.cards-grid__trash-btn')
+    this._cardImg = this._element.querySelector('.cards-grid__img')
+
     this._setEventListeners()
 
     this._element.querySelector('.cards-grid__title').textContent = this._title
 
-    this._element.querySelector('.cards-grid__img').src = this._image
-    this._element.querySelector('.cards-grid__img').alt = this._title
+    this._cardImg.src = this._image
+    this._cardImg.alt = this._title
 
     return this._element
   }

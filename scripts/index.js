@@ -14,7 +14,10 @@ const popupProfile = document.querySelector('.popup_form_profile'),
   formProfile = document.querySelector('.popup__form_type_profile'),
   formCard = document.querySelector('.popup__form_type_card'),
   cardsContainer = document.querySelector('.cards-grid__container'),
-  addCardBtn = document.querySelector('.profile__add-button')
+  addCardBtn = document.querySelector('.profile__add-button'),
+  popupPicture = document.querySelector('.popup_picture'),
+  popupImage = popupPicture.querySelector('.popup__image'),
+  popupImageCaption = popupPicture.querySelector('.popup__subtitle')
 
 const closePopupEscape = (e) => {
   if (e.key === 'Escape') {
@@ -36,6 +39,7 @@ const openPopup = ( popup ) => {
 const closePopup = ( popup ) => {
   if (popup) {
     popup.classList.remove('popup_opened')
+    document.removeEventListener('keydown', closePopupEscape)
   }
 }
 
@@ -55,11 +59,22 @@ closeButtons.forEach((button) => {
   button.addEventListener('click', () => closePopup(popup))
 })
 
-const addCard = ( data ) => {
-  const card = new Card (data, '.card-template')
+const handleOpenPopup = (name, image) => {
+  popupImage.src = image;
+  popupImage.alt = name;
+  popupImageCaption.textContent = name;
+  openPopup(popupPicture); 
+}
+
+const createCard = ( data ) => {
+  const card = new Card (data, '.card-template', handleOpenPopup)
   const cardElement = card.generateCard()
 
-  cardsContainer.append(cardElement)
+  return cardElement
+}
+
+const addCard = ( data ) => {
+  cardsContainer.append(createCard(data))
 }
 
 const initialCards = [
@@ -123,11 +138,11 @@ const config = {
   errorClass: 'popup__input-error_active'
 }
 
-const addCardFormValidator = new FormValidator(config, formCard)
-const editProfileFormValidator = new FormValidator(config, formProfile)
+const cardFormValidator = new FormValidator(config, formCard)
+const profileFormValidator = new FormValidator(config, formProfile)
 
-addCardFormValidator.enableValidation()
-editProfileFormValidator.enableValidation()
+cardFormValidator.enableValidation()
+profileFormValidator.enableValidation()
 
 popupProfile.addEventListener('submit', handleProfileFormSubmit)
 popupCard.addEventListener('submit', handleCardFormSubmit)

@@ -4,69 +4,77 @@ export class FormValidator {
     this._form = form
   }
 
-  _showInputError = (formElement, inputElement, errorMessage) => {
-    const errorElement = formElement.querySelector(`.${inputElement.id}-error`)
-    inputElement.classList.add(this._config.inputErrorClass)
-    errorElement.textContent = errorMessage
+  _showInputError = () => {
+    const errorElement = this._form.querySelector(`.${this._inputElement.id}-error`)
+    this._inputElement.classList.add(this._config.inputErrorClass)
+    errorElement.textContent = this._inputElement.validationMessage
     errorElement.classList.add(this._config.errorClass)
   }
 
-  _hideInputError = (formElement, inputElement) => {
-    const errorElement = formElement.querySelector(`.${inputElement.id}-error`)
-    inputElement.classList.remove(this._config.inputErrorClass)
+  _hideInputError = () => {
+    const errorElement = this._form.querySelector(`.${this._inputElement.id}-error`)
+    this._inputElement.classList.remove(this._config.inputErrorClass)
     errorElement.classList.remove(this._config.errorClass)
     errorElement.textContent = ''
   }
 
-  _hasInvalidInput = (inputList) => {
-    return inputList.some((inputElement) => {
+  _hasInvalidInput = () => {
+    return this._inputList.some((inputElement) => {
       return !inputElement.validity.valid
     })
   }
 
-  _disabledButton() {
+  _inactiveButton = () => {
+    this._buttonElement.classList.add(this._config.inactiveButtonClass)
+    this._buttonElement.setAttribute('disabled', 'disabled')
+  }
+
+  _activeButton = () => {
+    this._buttonElement.classList.remove(this._config.inactiveButtonClass)
+    this._buttonElement.removeAttribute('disabled')
+  }
+
+  _disableButton= () => {
     const buttonElement = this._form.querySelector(this._config.submitButtonSelector)
     if (buttonElement) {
-      buttonElement.classList.add(this._config.inactiveButtonClass)
-      buttonElement.setAttribute('disabled', 'disabled')
+      this._inactiveButton()
     }
   }
 
-  _toggleButtonState = (inputList, buttonElement) => {
-    if (this._hasInvalidInput(inputList)) {
-      buttonElement.classList.add(this._config.inactiveButtonClass)
-      buttonElement.setAttribute('disabled', 'disabled')
+  _toggleButtonState = () => {
+    if (this._hasInvalidInput(this._inputList)) {
+      this._inactiveButton()
     } else {
-      buttonElement.classList.remove(this._config.inactiveButtonClass)
-      buttonElement.removeAttribute('disabled')
+      this._activeButton()
     }
   }
 
-  _checkInputValidity = (formElement, inputElement) => {
-    if (!inputElement.validity.valid) {
-      this._showInputError(formElement, inputElement, inputElement.validationMessage)
+  _checkInputValidity = () => {
+    if (!this._inputElement.validity.valid) {
+      this._showInputError()
     } else {
-      this._hideInputError(formElement, inputElement)
+      this._hideInputError()
     }
   }
 
-  _setEventListeners() {
-    const inputList = Array.from(this._form.querySelectorAll(this._config.inputSelector))
-    const buttonElement = this._form.querySelector(this._config.submitButtonSelector)
-    this._toggleButtonState(inputList, buttonElement)
+  _setEventListeners = () => {
+    this._inputList = Array.from(this._form.querySelectorAll(this._config.inputSelector))
+    this._buttonElement = this._form.querySelector(this._config.submitButtonSelector)
+    this._toggleButtonState()
     
-    inputList.forEach((inputElement) => {
+    this._inputList.forEach((inputElement) => {
+      this._inputElement = inputElement
       inputElement.addEventListener('input', () => {
-        this._checkInputValidity(this._form, inputElement)
-        this._toggleButtonState(inputList, buttonElement)
+        this._checkInputValidity()
+        this._toggleButtonState()
       })
     })
   }
 
-  enableValidation() {
+  enableValidation = () => {
     this._form.addEventListener('submit', (e) => {
       e.preventDefault()
-      this._disabledButton()
+      this._disableButton()
     })
     this._setEventListeners()
   }
