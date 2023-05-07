@@ -15,15 +15,6 @@ export class Card {
     this._element = null
   }
 
-  _closePopupEscape = (e) => {
-    if (e.key === 'Escape') {
-      const openedPopup = document.querySelector('.popup_opened')
-      if (openedPopup) {
-        openedPopup.classList.remove('popup_opened')
-      }
-    }
-  }
-
   _setEventListeners() {
     this._cardLikeBtn.addEventListener('click', () => this._handleLikeCard())
     this._cardTrashBtn.addEventListener('click', () => this._handleTrashCard())

@@ -34,15 +34,8 @@ export class FormValidator {
     this._buttonElement.removeAttribute('disabled')
   }
 
-  _disableButton= () => {
-    const buttonElement = this._form.querySelector(this._config.submitButtonSelector)
-    if (buttonElement) {
-      this._inactiveButton()
-    }
-  }
-
   _toggleButtonState = () => {
-    if (this._hasInvalidInput(this._inputList)) {
+    if (this._hasInvalidInput()) {
       this._inactiveButton()
     } else {
       this._activeButton()
@@ -74,8 +67,13 @@ export class FormValidator {
   enableValidation = () => {
     this._form.addEventListener('submit', (e) => {
       e.preventDefault()
-      this._disableButton()
+      this._inactiveButton()
     })
     this._setEventListeners()
+  }
+
+  resetValidation() {
+    this._inactiveButton()
+    this._inputList.forEach((inputElement) => this._hideInputError(inputElement))
   }
 }

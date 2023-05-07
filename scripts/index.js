@@ -47,6 +47,7 @@ editProfileBtn.addEventListener('click', () => {
   openPopup(popupProfile)
   profileNameInput.value = profileTitle.textContent
   profileAboutInput.value = profileSubtitle.textContent
+  profileFormValidator.resetValidation()
 })
 
 addCardBtn.addEventListener('click', () => {
@@ -74,7 +75,7 @@ const createCard = ( data ) => {
 }
 
 const addCard = ( data ) => {
-  cardsContainer.append(createCard(data))
+  cardsContainer.prepend(createCard(data))
 }
 
 const initialCards = [
