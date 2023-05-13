@@ -1,9 +1,9 @@
-export class Card {
-  constructor ( data, templateSelector, handleOpenPopup ) {
+export default class Card {
+  constructor ( data, templateSelector, handleCardClick ) {
     this._title = data.name
     this._image = data.image
     this._templateSelector = templateSelector
-    this._handleOpenPopup = handleOpenPopup
+    this._handleCardClick = handleCardClick
   }
 
   _handleLikeCard = () => {
@@ -18,7 +18,7 @@ export class Card {
   _setEventListeners() {
     this._cardLikeBtn.addEventListener('click', () => this._handleLikeCard())
     this._cardTrashBtn.addEventListener('click', () => this._handleTrashCard())
-    this._cardImg.addEventListener('click', () => this._handleOpenPopup(this._title, this._image))
+    this._cardImg.addEventListener('click', () => this._handleCardClick(this._title, this._image))
   }
 
   _getTemplate() {

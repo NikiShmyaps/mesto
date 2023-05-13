@@ -1,23 +1,26 @@
-import { Card } from './Card.js'
-import { FormValidator } from './FormValidator.js'
+import './index.css';
+import Card from '../components/Card.js'
+import FormValidator from '../components/FormValidator.js'
 
-const popupProfile = document.querySelector('.popup_form_profile'),
-  popupCard = document.querySelector('.popup_form_card'),
-  editProfileBtn = document.querySelector('.profile__edit-button'),
-  closeButtons = document.querySelectorAll('.popup__close'),
-  profileTitle = document.querySelector('.profile__title'),
-  profileSubtitle = document.querySelector('.profile__subtitle'),
-  profileNameInput = document.querySelector('.popup__input_type_name'),
-  profileAboutInput = document.querySelector('.popup__input_type_about'),
-  cardTitleInput = document.querySelector('.popup__input_type_title'),
-  cardLinkInput = document.querySelector('.popup__input_type_link'),
-  formProfile = document.querySelector('.popup__form_type_profile'),
-  formCard = document.querySelector('.popup__form_type_card'),
-  cardsContainer = document.querySelector('.cards-grid__container'),
-  addCardBtn = document.querySelector('.profile__add-button'),
-  popupPicture = document.querySelector('.popup_picture'),
-  popupImage = popupPicture.querySelector('.popup__image'),
-  popupImageCaption = popupPicture.querySelector('.popup__subtitle')
+import { 
+  popupProfile,
+  popupCard,
+  editProfileBtn,
+  closeButtons,
+  profileTitle,
+  profileSubtitle,
+  profileNameInput,
+  profileAboutInput,
+  cardTitleInput,
+  cardLinkInput,
+  formProfile,
+  formCard,
+  cardsContainer,
+  addCardBtn,
+  popupPicture,
+  popupImage,
+  popupImageCaption
+} from '../utils/constants.js';
 
 const closePopupEscape = (e) => {
   if (e.key === 'Escape') {
