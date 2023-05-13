@@ -1,37 +1,53 @@
-const popupProfile = document.querySelector('.popup_form_profile'),
-  popupCard = document.querySelector('.popup_form_card'),
-  editProfileBtn = document.querySelector('.profile__edit-button'),
-  closeButtons = document.querySelectorAll('.popup__close'),
-  profileTitle = document.querySelector('.profile__title'),
-  profileSubtitle = document.querySelector('.profile__subtitle'),
+const editProfileBtn = document.querySelector('.profile__edit-button'),
   profileNameInput = document.querySelector('.popup__input_type_name'),
   profileAboutInput = document.querySelector('.popup__input_type_about'),
-  cardTitleInput = document.querySelector('.popup__input_type_title'),
-  cardLinkInput = document.querySelector('.popup__input_type_link'),
   formProfile = document.querySelector('.popup__form_type_profile'),
   formCard = document.querySelector('.popup__form_type_card'),
-  cardsContainer = document.querySelector('.cards-grid__container'),
-  addCardBtn = document.querySelector('.profile__add-button'),
-  popupPicture = document.querySelector('.popup_picture'),
-  popupImage = popupPicture.querySelector('.popup__image'),
-  popupImageCaption = popupPicture.querySelector('.popup__subtitle')
+  addCardBtn = document.querySelector('.profile__add-button')
+
+const initialCards = [
+  {
+    name: 'Архыз',
+    image: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+  },
+  {
+    name: 'Челябинская область',
+    image: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+  },
+  {
+    name: 'Иваново',
+    image: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+  },
+  {
+    name: 'Камчатка',
+    image: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+  },
+  {
+    name: 'Холмогорский район',
+    image: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+  },
+  {
+    name: 'Байкал',
+    image: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+  }
+]
+
+const config = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__btn',
+  inactiveButtonClass: 'popup__btn_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__input-error_active'
+}
 
 export {
-  popupProfile,
-  popupCard,
   editProfileBtn,
-  closeButtons,
-  profileTitle,
-  profileSubtitle,
   profileNameInput,
   profileAboutInput,
-  cardTitleInput,
-  cardLinkInput,
   formProfile,
   formCard,
-  cardsContainer,
   addCardBtn,
-  popupPicture,
-  popupImage,
-  popupImageCaption
+  initialCards,
+  config
 }

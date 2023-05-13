@@ -1,152 +1,93 @@
-import './index.css';
+import './index.css'
 import Card from '../components/Card.js'
 import FormValidator from '../components/FormValidator.js'
+import PopupWithForm from '../components/PopupWithForm.js'
+import PopupWithImage from '../components/PopupWithImage.js'
+import Section from '../components/Section.js'
+import UserInfo from '../components/UserInfo.js'
 
 import { 
-  popupProfile,
-  popupCard,
   editProfileBtn,
-  closeButtons,
-  profileTitle,
-  profileSubtitle,
   profileNameInput,
   profileAboutInput,
-  cardTitleInput,
-  cardLinkInput,
   formProfile,
   formCard,
-  cardsContainer,
   addCardBtn,
-  popupPicture,
-  popupImage,
-  popupImageCaption
-} from '../utils/constants.js';
+  initialCards,
+  config
+} from '../utils/constants.js'
 
-const closePopupEscape = (e) => {
-  if (e.key === 'Escape') {
-    const openedPopup = document.querySelector('.popup_opened')
-    closePopup(openedPopup)
-  }
-}
+const userInfo = new UserInfo({
+  name: '.profile__title',
+  info: '.profile__subtitle'
+})
 
-const closePopupOverlay = (e) => {
-  if (e.target.classList.contains('popup')) {
-    closePopup(e.target)
-  }
+const checkInfoFormProfile = ({name, info}) => {
+  profileNameInput.value = name
+  profileAboutInput.value = info
 }
 
-const openPopup = ( popup ) => {
-  popup.classList.add('popup_opened')
-  document.addEventListener('keydown', closePopupEscape)
-}
-const closePopup = ( popup ) => {
-  if (popup) {
-    popup.classList.remove('popup_opened')
-    document.removeEventListener('keydown', closePopupEscape)
+const popupProfile = new PopupWithForm({
+  popupSelector: '.popup_form_profile',
+  handleFormSubmit: (data) => {
+    userInfo.setUserInfo({
+      name: data.name,
+      info: data.info
+    })
+    popupProfile.close()
   }
-}
+})
+popupProfile.setEventListeners()
 
 editProfileBtn.addEventListener('click', () => {
-  openPopup(popupProfile)
-  profileNameInput.value = profileTitle.textContent
-  profileAboutInput.value = profileSubtitle.textContent
+  const data = userInfo.getUserInfo()
+  checkInfoFormProfile({
+    name: data.name,
+    info: data.info
+  })
   profileFormValidator.resetValidation()
+  popupProfile.open()
 })
 
-addCardBtn.addEventListener('click', () => {
-  openPopup(popupCard)
-})
+const popupPicture = new PopupWithImage('.popup_picture')
+popupPicture.setEventListeners()
 
-closeButtons.forEach((button) => {
-  const popup = button.closest('.popup')
-  popup.addEventListener('mousedown', closePopupOverlay)
-  button.addEventListener('click', () => closePopup(popup))
-})
-
-const handleOpenPopup = (name, image) => {
-  popupImage.src = image;
-  popupImage.alt = name;
-  popupImageCaption.textContent = name;
-  openPopup(popupPicture); 
+const handleCardClick = (name, image) => {
+  popupPicture.open(name, image)
 }
 
 const createCard = ( data ) => {
-  const card = new Card (data, '.card-template', handleOpenPopup)
+  const card = new Card (data, '.card-template', handleCardClick)
   const cardElement = card.generateCard()
 
   return cardElement
 }
 
-const addCard = ( data ) => {
-  cardsContainer.prepend(createCard(data))
-}
+const cardList = new Section({
+  items: initialCards,
+  renderer: (item) => {
+    cardList.addItem(createCard(item))
+  },
+}, '.cards-grid__container')
 
-const initialCards = [
-  {
-    name: 'Архыз',
-    image: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    image: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    image: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    image: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    image: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    image: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+cardList.renderItems()
+
+const popupFormCard = new PopupWithForm({
+  popupSelector: '.popup_form_card',
+  handleFormSubmit: (data) => {
+    cardList.addItem(createCard(data))
+    popupFormCard.close()
   }
-]
-
-initialCards.forEach( data => {
-  addCard( data )
 })
+popupFormCard.setEventListeners()
 
-const handleProfileFormSubmit = (e) => {
-  e.preventDefault()
-
-  profileTitle.textContent = profileNameInput.value
-  profileSubtitle.textContent = profileAboutInput.value
-
-  closePopup(popupProfile)
-}
-
-const handleCardFormSubmit = (e) => {
-  e.preventDefault()
-
-  addCard({
-    name: cardTitleInput.value,
-    image: cardLinkInput.value
-  })
-
-  closePopup(popupCard)
-  e.target.reset()
-}
-
-const config = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__btn',
-  inactiveButtonClass: 'popup__btn_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__input-error_active'
-}
+addCardBtn.addEventListener('click', () => {
+  cardFormValidator.resetValidation()
+  popupFormCard.open()
+})
 
 const cardFormValidator = new FormValidator(config, formCard)
 const profileFormValidator = new FormValidator(config, formProfile)
 
 cardFormValidator.enableValidation()
 profileFormValidator.enableValidation()
-
-popupProfile.addEventListener('submit', handleProfileFormSubmit)
-popupCard.addEventListener('submit', handleCardFormSubmit)

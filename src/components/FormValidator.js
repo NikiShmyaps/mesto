@@ -4,16 +4,16 @@ export default class FormValidator {
     this._form = form
   }
 
-  _showInputError = () => {
-    const errorElement = this._form.querySelector(`.${this._inputElement.id}-error`)
-    this._inputElement.classList.add(this._config.inputErrorClass)
-    errorElement.textContent = this._inputElement.validationMessage
+  _showInputError = (inputElement) => {
+    const errorElement = this._form.querySelector(`.${inputElement.id}-error`)
+    inputElement.classList.add(this._config.inputErrorClass)
+    errorElement.textContent = inputElement.validationMessage
     errorElement.classList.add(this._config.errorClass)
   }
 
-  _hideInputError = () => {
-    const errorElement = this._form.querySelector(`.${this._inputElement.id}-error`)
-    this._inputElement.classList.remove(this._config.inputErrorClass)
+  _hideInputError = (inputElement) => {
+    const errorElement = this._form.querySelector(`.${inputElement.id}-error`)
+    inputElement.classList.remove(this._config.inputErrorClass)
     errorElement.classList.remove(this._config.errorClass)
     errorElement.textContent = ''
   }
@@ -42,11 +42,11 @@ export default class FormValidator {
     }
   }
 
-  _checkInputValidity = () => {
-    if (!this._inputElement.validity.valid) {
-      this._showInputError()
+  _checkInputValidity = (inputElement) => {
+    if (!inputElement.validity.valid) {
+      this._showInputError(inputElement)
     } else {
-      this._hideInputError()
+      this._hideInputError(inputElement)
     }
   }
 
@@ -56,9 +56,8 @@ export default class FormValidator {
     this._toggleButtonState()
     
     this._inputList.forEach((inputElement) => {
-      this._inputElement = inputElement
       inputElement.addEventListener('input', () => {
-        this._checkInputValidity()
+        this._checkInputValidity(inputElement)
         this._toggleButtonState()
       })
     })
