@@ -8,8 +8,7 @@ export default class UserInfo {
   getUserInfo() {
     const dataUsers = {
       name: this._name.textContent,
-      info: this._info.textContent,
-      avatar: this._avatar.src
+      info: this._info.textContent
     }
 
     return dataUsers
@@ -24,5 +23,9 @@ export default class UserInfo {
 
   getUserId() {
     return this._id;
+  }
+
+  updateAvatar(avatar) {
+    this._avatar.src = avatar;
   }
 }

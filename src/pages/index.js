@@ -90,7 +90,7 @@ const editAvatarPopup = new PopupWithForm({
     editAvatarPopup.loading(true);
     api.updateAvatar(data)
       .then((data) => {
-        avatar.src = data.avatar;
+        userInfo.updateAvatar(data.avatar)
         editAvatarPopup.close();
       })
       .catch((err) => {
