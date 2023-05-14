@@ -3,7 +3,9 @@ const editProfileBtn = document.querySelector('.profile__edit-button'),
   profileAboutInput = document.querySelector('.popup__input_type_about'),
   formProfile = document.querySelector('.popup__form_type_profile'),
   formCard = document.querySelector('.popup__form_type_card'),
-  addCardBtn = document.querySelector('.profile__add-button')
+  addCardBtn = document.querySelector('.profile__add-button'),
+  editAvatarBtn = document.querySelector('.profile__avatar'),
+  formAvatar = document.querySelector('.popup__form_type_avatar')
 
 const initialCards = [
   {
@@ -42,11 +44,13 @@ const config = {
 }
 
 export {
+  editAvatarBtn,
   editProfileBtn,
   profileNameInput,
   profileAboutInput,
   formProfile,
   formCard,
+  formAvatar,
   addCardBtn,
   initialCards,
   config
